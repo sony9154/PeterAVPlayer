@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB16AE8D1DB60B44007017C5 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB16AE8C1DB60B44007017C5 /* PlayerView.m */; };
 		AB8E96791DB07E8A0029F98B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8E96781DB07E8A0029F98B /* main.m */; };
 		AB8E967C1DB07E8A0029F98B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8E967B1DB07E8A0029F98B /* AppDelegate.m */; };
 		AB8E967F1DB07E8A0029F98B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8E967E1DB07E8A0029F98B /* ViewController.m */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB16AE8B1DB60B44007017C5 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
+		AB16AE8C1DB60B44007017C5 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
 		AB8E96741DB07E8A0029F98B /* PeterAVPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeterAVPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8E96781DB07E8A0029F98B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AB8E967A1DB07E8A0029F98B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -62,6 +65,8 @@
 				AB8E967B1DB07E8A0029F98B /* AppDelegate.m */,
 				AB8E967D1DB07E8A0029F98B /* ViewController.h */,
 				AB8E967E1DB07E8A0029F98B /* ViewController.m */,
+				AB16AE8B1DB60B44007017C5 /* PlayerView.h */,
+				AB16AE8C1DB60B44007017C5 /* PlayerView.m */,
 				AB8E96801DB07E8A0029F98B /* Main.storyboard */,
 				AB8E96831DB07E8A0029F98B /* Assets.xcassets */,
 				AB8E96851DB07E8A0029F98B /* LaunchScreen.storyboard */,
@@ -152,6 +157,7 @@
 				AB8E967F1DB07E8A0029F98B /* ViewController.m in Sources */,
 				AB8E967C1DB07E8A0029F98B /* AppDelegate.m in Sources */,
 				AB8E96791DB07E8A0029F98B /* main.m in Sources */,
+				AB16AE8D1DB60B44007017C5 /* PlayerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +275,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VASCreative.PeterAVPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -280,6 +287,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.VASCreative.PeterAVPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
