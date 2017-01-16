@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AVKit/AVKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface ViewController ()
 @property (nonatomic) AVPlayerViewController *avPlayerViewController;
@@ -27,9 +28,27 @@
     self.avPlayerViewController.player = player;
     self.avPlayerViewController.view.frame = self.view.frame;
     [self.view addSubview:self.avPlayerViewController.view];
+    MPVolumeView *volumeView = [ [MPVolumeView alloc] init] ;
+    volumeView.center = CGPointMake(volumeView.center.x + self.view.frame.size.width/2, volumeView.center.y + 350);
+    [volumeView setShowsVolumeSlider:YES];
+    [volumeView sizeToFit];
+    [self.avPlayerViewController.view addSubview:volumeView];
     self.view.autoresizesSubviews = TRUE;
-    
+
 }
+// =======================強制轉向播放=====================================
+- (void)viewDidAppear:(BOOL)animated {
+    [[UIDevice currentDevice] setValue:
+     [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeRight]
+                                forKey:@"orientation"];
+}
+- (BOOL) shouldAutorotate {
+    return YES;
+}
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return (UIInterfaceOrientationMaskLandscape);
+}
+// =======================強制轉向播放=====================================
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
