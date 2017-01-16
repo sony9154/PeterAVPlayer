@@ -12,7 +12,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface ViewController ()
-@property (nonatomic) AVPlayerViewController *avPlayerViewController;
+
 @end
 
 @implementation ViewController
@@ -22,8 +22,6 @@
     
     NSURL *videoUrl = [NSURL URLWithString:@"http://baobab.cdn.wandoujia.com/14468618701471.mp4"];
     //NSURL *videoUrl = [NSURL URLWithString:@"http://live.hkstv.hk.lxdns.com/live/hks/playlist.m3u8"];
-    //NSURL *videoUrl = [NSURL URLWithString:@"http://evaluation.unified-streaming.com/video/tears-of-steel/tears-of-steel.ism/.m3u8"];
-    AVPlayer *player = [AVPlayer playerWithURL:videoUrl];
     self.avPlayerViewController = [AVPlayerViewController new];
     self.avPlayerViewController.player = player;
     self.avPlayerViewController.view.frame = self.view.frame;
