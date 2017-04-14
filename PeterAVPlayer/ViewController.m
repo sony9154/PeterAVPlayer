@@ -13,6 +13,7 @@
 
 @interface ViewController ()
 @property (nonatomic) AVPlayerViewController *avPlayerViewController;
+@property(nonatomic,strong)UISlider *volumeViewSlider;
 @end
 
 @implementation ViewController
@@ -28,12 +29,10 @@
     self.avPlayerViewController.player = player;
     self.avPlayerViewController.view.frame = self.view.frame;
     [self.view addSubview:self.avPlayerViewController.view];
-    MPVolumeView *volumeView = [ [MPVolumeView alloc] init] ;
-    volumeView.center = CGPointMake(volumeView.center.x + self.view.frame.size.width/2, volumeView.center.y + 350);
-    [volumeView setShowsVolumeSlider:YES];
-    [volumeView sizeToFit];
-    [self.avPlayerViewController.view addSubview:volumeView];
+    
     self.view.autoresizesSubviews = TRUE;
+    
+    [self createGesture];
 
 }
 // =======================強制轉向播放=====================================
@@ -49,6 +48,38 @@
     return (UIInterfaceOrientationMaskLandscape);
 }
 // =======================強制轉向播放=====================================
+
+#pragma mark - 创建手势
+- (void)createGesture
+{
+    //获取系统音量
+    MPVolumeView *volumeView = [[MPVolumeView alloc] init];
+    _volumeViewSlider = nil;
+    for (UIView *view in [volumeView subviews]){
+        if ([view.class.description isEqualToString:@"MPVolumeSlider"]){
+            _volumeViewSlider = (UISlider *)view;
+            break;
+        }
+    }
+    
+    // 添加平移手势，用来控制音量和快进快退
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panDirection:)];
+    [self.view addGestureRecognizer:pan];
+}
+
+#pragma mark - 平移手势方法
+- (void)panDirection:(UIPanGestureRecognizer *)pan
+{
+    CGPoint veloctyPoint = [pan velocityInView:self.view];
+    [self verticalMoved:veloctyPoint.y]; // 垂直移动方法只要y方向的值
+}
+
+#pragma mark - pan垂直移动的方法
+- (void)verticalMoved:(CGFloat)value
+{
+    // 更改系统的音量
+    self.volumeViewSlider.value -= value / 10000; // 越小幅度越小
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
