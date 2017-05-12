@@ -14,6 +14,7 @@
 @interface ViewController ()
 @property (nonatomic) AVPlayerViewController *avPlayerViewController;
 @property(nonatomic,strong)UISlider *volumeViewSlider;
+@property (nonatomic,strong) UIView *volumeControlView;
 @end
 
 @implementation ViewController
@@ -28,6 +29,13 @@
     self.avPlayerViewController = [AVPlayerViewController new];
     self.avPlayerViewController.player = player;
     self.avPlayerViewController.view.frame = self.view.frame;
+    
+    self.volumeControlView = [[UIView alloc] initWithFrame:CGRectMake(self.avPlayerViewController.view.frame.size.height / 2,
+                                                                     0,
+                                                                     self.view.frame.size.height /2,
+                                                                     self.view.frame.size.width)
+                              ];
+    [self.avPlayerViewController.view addSubview:self.volumeControlView];
     [self.view addSubview:self.avPlayerViewController.view];
     
     self.view.autoresizesSubviews = TRUE;
@@ -64,7 +72,7 @@
     
     // 添加平移手势，用来控制音量和快进快退
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panDirection:)];
-    [self.view addGestureRecognizer:pan];
+    [self.volumeControlView addGestureRecognizer:pan];
 }
 
 #pragma mark - 平移手势方法
